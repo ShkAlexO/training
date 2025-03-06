@@ -1,23 +1,27 @@
 import {CurrentUser} from './CurrentUser';
-import {UsersObjectType} from './HW2';
+import {UsersObjectType, UserType} from './HW2';
 
 type UserList2PropsType = {
-	users: any // пропиши типизацию
-	filterUsers: any // пропиши типизацию
+    users: UsersObjectType
+    filterUsers: () => void
 };
 
-export const UserList2 = (props: UserList2PropsType) => {
-	return (
-		<div id={'hw02-users'}>
-			<h2>User List:</h2>
+export const UserList2 = ({users, filterUsers}: UserList2PropsType) => {
+    if (!users.myFriends.length) return null
 
-			{/*<button id={'hw02-filter-button'} onClick={() => props.filterUsers}>SHOW ME FRIENDS FROM LA</button>*/}
+    return (
+        <div id={'hw02-users'}>
+            <h2>User List:</h2>
 
-			{/*<ul>*/}
-			{/*  {props.users.myFriends.map((user) => (*/}
-			{/*    <ВЫЗЫВАЕМ КОМПОНЕНТУ CurrentUser />*/}
-			{/*  ))}*/}
-			{/*</ul>*/}
-		</div>
-	);
+            <button id={'hw02-filter-button'} onClick={filterUsers}>SHOW ME FRIENDS FROM
+                LA
+            </button>
+       
+            <ul>
+                {users.myFriends.map((user: UserType) => (
+                    <CurrentUser key={user.id} {...user}/>
+                ))}
+            </ul>
+        </div>
+    );
 };
