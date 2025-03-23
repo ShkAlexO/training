@@ -1,0 +1,21 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  width: 100%;
+  max-width: 350px;
+  padding: 25px;
+  border: blue 2px solid;
+  border-radius: 16px;
+  background-color: azure;
+  margin: 150px auto;
+
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    padding: 10px;
+    border: blue 1px solid;
+    border-radius: 8px;
+  }
+}
